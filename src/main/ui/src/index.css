@@ -8,7 +8,7 @@
 
 body {
   font-family: 'Heebo', sans-serif;
-  background-color: gray;
+  background-color: whitesmoke;
 }
 
 .header {
@@ -20,39 +20,78 @@ body {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  background-color: bisque;
+  background-color: yellowgreen;
 }
 
 .grid {
 
   width: 60%;
-  margin: auto;
+  margin: 30px auto;
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 15px;
   row-gap: 15px;
   justify-content: center;
-  background-color: cyan;
+  background-color: whitesmoke;
 
 }
 
 .tile {
   
-  background-color: burlywood;
+  background-color: grey;
   min-width: 250px;
   min-height: 250px;
+  cursor: pointer;
+  
+
+}
+
+.tile-elements
+{
+
+  pointer-events: none;
 
 }
 
 .searchHistory {
 
-  display:inline-block;
+  float: left;
+  display: grid;
+  margin: 15px;
   top: 30px;
   left: 30px;
   transition:  visibility 0s, opacity 0.5s linear;
-  height: 200px;
+  height: 70vh;
   width: 300px;
-  background-color: red;
+  background-color: grey;
 
 }
+
+.history-tile {
+  
+  background-color: pink;
+  min-width: 10px;
+  min-height: 10px;
+  cursor: pointer;
+}
+
+
+.modal {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  right: 40px;
+  bottom: 40px;
+  background-color: grey;
+}
+
+.overlaymodal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rebeccapurple;
+}
+  

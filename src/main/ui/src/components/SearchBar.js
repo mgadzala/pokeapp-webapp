@@ -1,7 +1,7 @@
 const SearchBar = ({ onChange }) => {
 
     return (
-        <input type="text" onChange={onChange} />
+        <input type="text" onChange={onChange}/>
     )
 }
 

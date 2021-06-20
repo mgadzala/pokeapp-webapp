@@ -1,16 +1,19 @@
 import PropTypes from 'prop-types'
 
-const Tile = ({ pokemon }) => {
+const Tile = ({ pokemon, lastPokemonElementRef, onClick}) => {
     return (
-        <div className="tile">
-            <h1>{pokemon.name}</h1>
-            <p>{pokemon.habitat}</p>
+        <div id={pokemon.id} ref={lastPokemonElementRef} className="tile" onClick={onClick}>
+            <div className="tile-elements">
+                <h1>{pokemon.name}</h1>
+                <p>{pokemon.habitat}</p>
+            </div>
+            
         </div>
     )
 }
 
 Tile.defaultProps = {
-    pokemon: "placeholder"
+    pokemon: ""
 }
 
 export default Tile
