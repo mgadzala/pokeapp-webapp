@@ -13,6 +13,8 @@ public class PokeAppService {
 	public static void main(String[] args) throws IOException, JSONException {
 		SpringApplication.run(PokeAppService.class, args);
 
+		new WebsiteAPI();
+
 	}
 
 }

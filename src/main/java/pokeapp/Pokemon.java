@@ -1,44 +1,64 @@
 package pokeapp;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class Pokemon {
     
-    private String name;
     private int id;
-    private int height;
-    private int weight;
 
-    private String artwork_url;
+    private String name;
+    private String height;
+    private String weight;
 
-    private int statHP;
-    private int effortHP;
-    private int statATT;
-    private int effortATT;
-    private int statDEF;
-    private int effortDEF;
-    private int statSATT;
-    private int effortSATT;
-    private int statSDEF;
-    private int effortSDEF;
-    private int statSPEED;
-    private int effortSPEED;
+    private int[] stats;
 
-    
-
-    public Pokemon(String name) {
-        this.name = name;
-        System.out.println(name);
-    }
 
     public Pokemon() {
 
     }
 
-    public void printName() {
-        
-        System.out.println(this.name);
+    public String getPokemonInfo() {
+
+        Map<String, String> map = new HashMap<>();
+        JSONArray jsonarr = new JSONArray();
+
+        map.put("name", name);
+        map.put("id", Integer.toString(id));
+        map.put("height", height);
+        map.put("weight", weight);
+
+        jsonarr.put(new JSONObject(map));
+
+        return jsonarr.toString();
 
     }
 
+    public void setName (String name) {
+
+        this.name = name;
+
+    }
+
+    public void setID (int id) {
+
+        this.id = id;
+
+    }
+
+    public void setHeight (String height) {
+
+        this.height = height;
+
+    }
+
+    public void setWeight (String weight) {
+
+        this.weight = weight;
+
+    }
 
 }
