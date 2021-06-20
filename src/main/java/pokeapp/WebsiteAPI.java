@@ -32,8 +32,8 @@ public class WebsiteAPI {
     }
 
     @GetMapping
-    public String getPokemonGrid(@RequestParam int limit, @RequestParam int offset) {
-        return pokemonList.getPagePokemons(limit, offset);
+    public String getPokemonGrid(@RequestParam int limit, @RequestParam int offset, @RequestParam(required = false) String q) {
+        return pokemonList.getPokemonsPageWithQuery(limit, offset, q);
 
     }
 
@@ -44,10 +44,10 @@ public class WebsiteAPI {
 
     }
 
-    @GetMapping("/search")
-    public String getPokemonCard(@RequestParam String q) throws IOException{;
-        return pokemonList.getSearchResults(q);
-    }
+/*     @GetMapping("/searchhistory")
+    public String getPokemonCard() {;
+        return pokemonList.getSearchHistory();
+    } */
 
 
 

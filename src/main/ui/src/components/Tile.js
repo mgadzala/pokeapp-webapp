@@ -10,7 +10,7 @@ const Tile = ({ pokemon }) => {
 }
 
 Tile.defaultProps = {
-    pokemon: "XDDD"
+    pokemon: "placeholder"
 }
 
 export default Tile

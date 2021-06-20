@@ -1,9 +1,9 @@
 import SearchBar from "./SearchBar"
 
-const Header = () => {
+const Header = ({ onChange }) => {
     return (
         <header className='header'>
-            <SearchBar />
+            <SearchBar onChange={onChange}/>
         </header>
     )
 }

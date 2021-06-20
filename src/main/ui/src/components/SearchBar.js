@@ -1,16 +1,7 @@
-const SearchBar = () => {
-
-    const onClick = () => {
-        console.log('click');
-    }
+const SearchBar = ({ onChange }) => {
 
     return (
-        <form action="/" method="get" onClick={onClick}>
-            <input
-                type="text"
-                placeholder="XD"
-            />
-        </form>
+        <input type="text" onChange={onChange} />
     )
 }
 
