@@ -31,7 +31,10 @@ public class Pokemon {
         map.put("height", height);
         map.put("weight", weight);
 
+        PokemonHistory.addToSearchHistory(new JSONObject(map));
+    
         jsonarr.put(new JSONObject(map));
+
 
         return jsonarr.toString();
 

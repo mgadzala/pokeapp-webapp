@@ -37,18 +37,15 @@ public class WebsiteAPI {
 
     }
 
-    @GetMapping("/details")
+    @GetMapping("/det/")
     public String getPokemonCard(@RequestParam int id) throws IOException{;
         pokemon = PokeAPIWrapper.createPokemonInfo(id);
         return pokemon.getPokemonInfo();
 
     }
 
-/*     @GetMapping("/searchhistory")
-    public String getPokemonCard() {;
-        return pokemonList.getSearchHistory();
-    } */
-
-
-
+    @GetMapping("/history/")
+    public String getSearchHistory() {
+        return PokemonHistory.getSearchHistory();
+    }
 }

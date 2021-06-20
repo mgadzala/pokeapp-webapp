@@ -83,28 +83,6 @@ public class PokemonList{
         
 
     }
-    
-
-    public String getPokemonsPageSearchHistory() {
-
-        Map<String, String> map = new HashMap<>();
-        JSONArray jsonarr = new JSONArray();
-
-        for (int i = 0; i < recentlySearched.size(); i++) {
-
-            map.put("name", recentlySearched.get(i)[0]);
-            map.put("id", recentlySearched.get(i)[1]);
-            map.put("habitat", recentlySearched.get(i)[2]);
-
-            jsonarr.put(new JSONObject(map));
-
-            map.clear();
-
-       }
-
-       return jsonarr.toString();
-
-    }
 
     private String getPokemonsPageWithoutQuery(int numberOfPokemons, int offset) {
 
