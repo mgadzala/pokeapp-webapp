@@ -1,17 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@500&display=swap');
 
 * {
+
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+
 }
 
 body {
+
   font-family: 'Heebo', sans-serif;
   background-color: whitesmoke;
+
 }
 
 .header {
+
   background-color: #282c34;
   min-height: 25vh;
   display: flex;
@@ -20,16 +25,17 @@ body {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  background-color: yellowgreen;
+  background-color: bisque;
+  box-shadow: 0 0 25px rgba(62, 104, 95, 0.25);
+
 }
 
 .grid {
 
   width: 60%;
   margin: 30px auto;
-
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, 250px);
   gap: 15px;
   row-gap: 15px;
   justify-content: center;
@@ -42,13 +48,14 @@ body {
   background-color: grey;
   min-width: 250px;
   min-height: 250px;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(62, 104, 95, 0.25);
   cursor: pointer;
-  
+  text-align: center;
 
 }
 
-.tile-elements
-{
+.tile-elements {
 
   pointer-events: none;
 
@@ -65,33 +72,58 @@ body {
   height: 70vh;
   width: 300px;
   background-color: grey;
+  box-shadow: 0 0 25px rgba(62, 104, 95, 0.25);
+  border-radius: 25px;
 
 }
 
 .history-tile {
   
-  background-color: pink;
-  min-width: 10px;
-  min-height: 10px;
-  cursor: pointer;
+  background-color: ghostwhite;
+  margin: auto;
+  min-width: 80%;
+  min-height: 12%;
+  border-radius: 25px;
+  box-shadow: 0 0 25px rgba(62, 104, 95, 0.25);
+  text-align: center;
+
+}
+
+.searchBar {
+
+  width: 25%;
+  border: 3px solid #00B4CC;
+  padding: 5px;
+  height: 33px;
+  border-radius: 5px;
+  outline: none;
+  color: #949361;
+
 }
 
 
 .modal {
+
   position: absolute;
-  top: 40px;
-  left: 40px;
-  right: 40px;
-  bottom: 40px;
-  background-color: grey;
+  top: 40%;
+  left: 40%;
+  right: 40%;
+  bottom: 40%;
+  border-radius: 10px;
+  background-color: teal;
+  text-align: center;
+  transition: opacity 300ms ease-in-out;
+
 }
 
 .overlaymodal {
+
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rebeccapurple;
+  background-color: rgba(0,0,0,0.6);
+
 }
   
