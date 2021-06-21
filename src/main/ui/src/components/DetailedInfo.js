@@ -4,9 +4,8 @@ const DetailedInfo = ({ pokemon }) => {
     return (
         <div>
             <h1>{pokemon[0].name}</h1>
-            <h1>{pokemon[0].height}</h1>
-            <h1>{pokemon[0].weight}</h1>
-            <p>2</p>
+            <h1>Height: {pokemon[0].height}</h1>
+            <h1>Weight: {pokemon[0].weight}</h1>
         </div>
     )
 }
