@@ -6,8 +6,6 @@ import org.json.JSONException;
 
 public class PokeAPIWrapper {
 
-    private PokemonList pokemonList;
-
     private static ArrayList<Integer> pokeminIDList  = new ArrayList<Integer>();
     private static ArrayList<String> pokemonNameList = new ArrayList<String>();
     private static ArrayList<String[]> pokemonHabitatLUT = new ArrayList<String[]>();

@@ -13,11 +13,7 @@ public class PokemonList{
     private ArrayList<String> name;
     private ArrayList<String> habitat;
 
-    private ArrayList<String[]> recentlySearched;
-
     PokemonList(ArrayList<Integer> idList, ArrayList<String> nameList, ArrayList<String[]> habitatLUT) {
-        
-        recentlySearched = new ArrayList<String[]>();
 
         id = new ArrayList<Integer>();
         name = new ArrayList<String>();

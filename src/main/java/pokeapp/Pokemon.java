@@ -14,8 +14,6 @@ public class Pokemon {
     private String height;
     private String weight;
 
-    private int[] stats;
-
 
     public Pokemon() {
 
