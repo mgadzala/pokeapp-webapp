@@ -1,5 +1,6 @@
 import Header from './components/Header'
-import DetailedInfo from 'react-modal'
+import Modal from 'react-modal'
+import DetailedInfo from './components/DetailedInfo'
 import Grid from './components/Grid'
 import SearchHistory from './components/SearchHistory'
 import { useState, useEffect, useRef, useCallback } from 'react'
@@ -8,6 +9,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 const PokeApp = () => {
 
     const [loading, setLoading] = useState(true)
+    const [loadingDetails, setLoadingDetails] = useState(true)
     const [hasMore, setHasMore] = useState(false)
     const [pageNumber, setPageNumber] = useState(1);
     const [pokemonSearch, setPokemonSearch] = useState('')
@@ -17,21 +19,22 @@ const PokeApp = () => {
     const [pokemonSearchHistory, setPokemonSearchHistory] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false)
 
-
-
     const offset = 100;
 
+    // grid content fetch hook
     useEffect(() => {
         setLoading(true)
         const getGridPageFromAPI = async () => {
             const gridPageFromAPI = await fetchGridPage()
-            setPokemoneGrid([...pokemonGridPage, ...gridPageFromAPI])
+            setPokemoneGrid(prevPokemonGridPage => {
+                return [...new Set([...prevPokemonGridPage, ...gridPageFromAPI])]})
         }
-        
         getGridPageFromAPI()
     }, [pokemonSearch, pageNumber])
 
+    // modal content fetch hook
     useEffect(() => {
+        setLoadingDetails(true)
          const getPokemonDetailsFromAPI = async () => {
             const pokemonDetails = await fetchPokeDetails()
             setPokemoneDetails(pokemonDetails)
@@ -40,6 +43,7 @@ const PokeApp = () => {
         getPokemonDetailsFromAPI()    
     }, [pokemonDetailsID])
 
+    // side history fetch hook
     useEffect(() => {
         const getPokemonHistoryFromAPI = async () => {
            const pokemonSearchHistory = await fetchSearchHistory()
@@ -50,15 +54,10 @@ const PokeApp = () => {
    }, [pokemonDetails])
 
 
-
-      // Fetch Tasks
     const fetchGridPage = async () => {
         const res = await fetch('http://localhost:8080/api/pokemon/?limit=' +
                                 offset + '&offset=' + ((pageNumber - 1) * offset) +
                                 '&q=' + pokemonSearch)
-
-
-
         const data = await res.json()
 
         setHasMore(data.length > 0)
@@ -68,28 +67,27 @@ const PokeApp = () => {
     }
 
     const fetchPokeDetails = async () => {
-
-        const res = await fetch(`http://localhost:8080/api/pokemon/det/?id=${pokemonDetailsID}`)
-                
+        const res = await fetch(`http://localhost:8080/api/pokemon/det/?id=${pokemonDetailsID}`)               
         const data = await res.json()
+
+        setLoadingDetails(false)
         
         return data
     }
 
     const fetchSearchHistory = async () => {
-
-        const res = await fetch(`http://localhost:8080/api/pokemon/history/`)
-                
+        const res = await fetch(`http://localhost:8080/api/pokemon/history/`)               
         const data = await res.json()
         
         return data
     }
 
-
+    // Setting observer to the last tile of the visible grid
     const observer = useRef()
     const lastPokemonElementRef = useCallback(node => {
       if (loading) return
       if (observer.current) observer.current.disconnect()
+      // async observing if element is visible in window
       observer.current = new IntersectionObserver(entries => {
         if (entries[0].isIntersecting && hasMore) {
           setPageNumber(pageNumber + 1)
@@ -99,45 +97,39 @@ const PokeApp = () => {
     }, [loading])
 
     const searchHandle = (e) => {
-
         setPokemonSearch(e.target.value)
         setPokemoneGrid([])
         setPageNumber(1);
-
     }
 
     const historyHandle = (e) => {
-
-        console.log(e);
         setPokemoneDetailsID(e.target.id)
         openModal()
     }
 
     const closeModal = () => {
         setModalIsOpen(false)
-        console.log(modalIsOpen)
     }
 
     const openModal = () => {
         setModalIsOpen(true)
-        console.log(modalIsOpen)
     }
 
+    // react-modal logic
     const renderModal = () => {
-
         if (pokemonDetails[0] !== undefined && pokemonDetailsID !== 0 ) {
             return ( 
-                <DetailedInfo 
+                <Modal 
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
                 className="modal"
                 overlayClassName="overlaymodal"
                 ariaHideApp={false}
                 >
-                    <h1>{pokemonDetails[0].name}</h1>
-                    <h1>{pokemonDetails[0].height}</h1>
-                    <h1>{pokemonDetails[0].weight}</h1>
-                </DetailedInfo>
+                    {loadingDetails == false ? (
+                        <DetailedInfo pokemon={pokemonDetails}/>
+                    ) : ""}
+                </Modal>
             )
         }
 
@@ -153,6 +145,7 @@ const PokeApp = () => {
             pokemons={pokemonGridPage}
             lastPokemonElementRef={lastPokemonElementRef}
             length={pokemonGridPage.length}
+            loading={loading}
             />
            
         </div>
