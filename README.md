@@ -27,3 +27,6 @@ $ cp -Force ..\src\main\ui-react\* .
 
 $ npm start
 ```
+
+Site should be available at:
+http://localhost:3000/
