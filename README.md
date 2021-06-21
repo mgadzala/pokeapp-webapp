@@ -23,7 +23,7 @@ $ cd .\frontend\
 $ npm i react-modal
 
 Overrite with our source code
-$ cp -Force ..\src\main\ui-react\* .
+$ cp -Force ..\src\main\ui\* .
 
 $ npm start
 ```
