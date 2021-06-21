@@ -25,7 +25,7 @@ body {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  background-color: bisque;
+  background-color: rgba(0,0,0,0.15);
   box-shadow: 0 0 25px rgba(62, 104, 95, 0.25);
 
 }
@@ -43,15 +43,31 @@ body {
 
 }
 
+
 .tile {
   
-  background-color: grey;
   min-width: 250px;
   min-height: 250px;
   border-radius: 10px;
   box-shadow: 0 0 25px rgba(62, 104, 95, 0.25);
   cursor: pointer;
   text-align: center;
+  transition: 0.75s cubic-bezier(0.44,-0.07, 0.57, 2.3);
+  animation: loadAnim 2s;
+
+}
+
+@keyframes loadAnim {
+
+  from {opacity: 0; margin-top: -25px;}
+  to   {opacity: 1; margin-top: 0px}
+  
+}
+
+.tile:hover {
+
+  transform: scale(1.15);
+  transition: 0.5s;
 
 }
 
@@ -64,32 +80,45 @@ body {
 .searchHistory {
 
   float: left;
-  display: grid;
-  margin: 15px;
-  top: 30px;
-  left: 30px;
-  transition:  visibility 0s, opacity 0.5s linear;
-  height: 70vh;
+  display: table;
+  position: sticky;
+  margin: 30px 25px 0px 0px;
+  left: 25px;
+  height: 65vh;
   width: 300px;
-  background-color: grey;
+  vertical-align: middle;
+  border-radius: 15px;
+  border: 3px solid #312f2f5e;
+  border-style: dashed;
+  border-width: 2px;
+  background-color: rgba(0,0,0,0.15);
   box-shadow: 0 0 25px rgba(62, 104, 95, 0.25);
 
 }
 
 .history-tile {
-  
-  background-color: gainsboro;
-  min-width: 10px;
-  min-height: 10px;
-  border-radius: 10px;;
-  box-shadow: 0 0 25px rgba(62, 104, 95, 0.25);
 
+  text-align: center;
+  margin: 5.25px;
+  height: 9%;
+  border-radius: 5px;
+  background-color: rgba(0,0,0,0.15);
+  box-shadow: 0 0 25px rgba(62, 104, 95, 0.25);
+  animation: appear 1s
+
+}
+
+@keyframes appear {
+
+  from  {opacity: 0;}
+  to    {opacity: 1;}
+ 
 }
 
 .searchBar {
 
   width: 25%;
-  border: 3px solid #00B4CC;
+  border: 3px solid rgba(62, 104, 95, 0.35);
   padding: 5px;
   height: 33px;
   border-radius: 5px;
@@ -97,7 +126,6 @@ body {
   color: #949361;
 
 }
-
 
 .modal {
 
