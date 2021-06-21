@@ -8,6 +8,7 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 
 const PokeApp = () => {
 
+    const [firstLoad, setFirstLoad] = useState(true)
     const [loading, setLoading] = useState(true)
     const [loadingDetails, setLoadingDetails] = useState(true)
     const [hasMore, setHasMore] = useState(false)
@@ -40,7 +41,7 @@ const PokeApp = () => {
             setPokemoneDetails(pokemonDetails)
         }
         
-        getPokemonDetailsFromAPI()    
+        (firstLoad == true ) ? setFirstLoad(false) : getPokemonDetailsFromAPI()    
     }, [pokemonDetailsID])
 
     // side history fetch hook
