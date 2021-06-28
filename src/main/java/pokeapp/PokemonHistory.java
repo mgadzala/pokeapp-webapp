@@ -23,10 +23,10 @@ public class PokemonHistory {
 
         if (!isInTable) {
             if (historyStack.size() < 10) {
-            historyStack.add(0, pokemonInfo);
+                historyStack.add(0, pokemonInfo);
             } else {
-            historyStack.remove(9);
-            historyStack.add(0, pokemonInfo);
+                historyStack.remove(9);
+                historyStack.add(0, pokemonInfo);
             }
         }   
     }
