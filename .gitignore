@@ -32,6 +32,10 @@ build/
 ### VS Code ###
 .vscode/
 
+### Node js backend
+/src/main/backend/node_modules
+/src/main/backend/.eslintrc.json
+
 ### React
 # dependencies
 /src/main/ui/node_modules
